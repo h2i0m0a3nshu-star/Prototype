@@ -51,8 +51,14 @@ bool sprites::flipanimate(Texture2D curr, Rectangle DestRect, int num_of_images)
         return false;
 }
 
+void sprites::setctr(int newctr)
+{
+    ctr = newctr;
+}
+
 void sprites::delay_handler()
 {
+
     if (delay >= 0 && delay < 5) {
         delay++;
     }

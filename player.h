@@ -6,6 +6,7 @@ typedef enum state {
 	IDLE,
 	ATTACK_RIGHT,
 	ATTACK_LEFT,
+	COMBO,
 	PUNISH,
 	DEATH
 };
@@ -16,8 +17,7 @@ public:
 	player();
 	void set_state(state new_state);
 	void player_behaviour();
-	void punishHandlingmethod();
-	void deathHandlingmethod();
+
 	~player() {};
 private:
 	bool delay;

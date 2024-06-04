@@ -14,6 +14,7 @@ player::player()
 
 void player::set_state(state new_state)
 {
+	entity_sprite.setctr(0);
 	curr_state = new_state;
 }
 
@@ -43,9 +44,9 @@ void player::idle()
 {
 	DestRect.width = 48 * 2;
 	DestRect.height = 48 * 2;
-	DestRect.y = GetScreenHeight() / 2+30;
+	DestRect.y = GetScreenHeight() / 2 + 18;
 	if (curr_weapon == NORMAL) {
-		entity_sprite.animate(idle_state, DestRect, 0, 10);
+		delay = entity_sprite.animate(idle_state, DestRect, 0, 10);
 	}
 }
 
