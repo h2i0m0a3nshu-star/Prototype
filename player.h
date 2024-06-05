@@ -2,7 +2,7 @@
 #include <raylib.h>
 #include"entity.h"
 
-typedef enum state {
+typedef enum player_state {
 	IDLE,
 	ATTACK_RIGHT,
 	ATTACK_LEFT,
@@ -15,7 +15,7 @@ typedef enum state {
 class player : public entity {
 public:
 	player();
-	void set_state(state new_state);
+	void set_state(player_state new_state);
 	void player_behaviour();
 
 	~player() {};
@@ -29,10 +29,11 @@ private:
 		SWORD
 	};
 
-	state curr_state;
+	player_state curr_state;
 	weapon curr_weapon = NORMAL;
 
 	void idle();
 	void attack_right();
 	void attack_left();
+	void death();
 };
