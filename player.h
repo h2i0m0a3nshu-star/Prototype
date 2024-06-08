@@ -17,7 +17,7 @@ public:
 	player();
 	void set_state(player_state new_state);
 	void player_behaviour();
-
+	Vector2 get_pos() const;
 	~player() {};
 private:
 	bool delay;
@@ -34,6 +34,6 @@ private:
 
 	void idle();
 	void attack_right();
-	void attack_left();
+	void attack_left(); 
 	void death();
 };
