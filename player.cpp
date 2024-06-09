@@ -8,6 +8,10 @@ player::player()
 	curr_state = IDLE;
 	curr_weapon = NORMAL;
 
+	HP = 5;
+
+	invincibility = 10;
+
 	delay = false;
 
 	DestRect = { pos.x, pos.y,48*3,48*3 };
@@ -19,8 +23,19 @@ void player::set_state(player_state new_state)
 	curr_state = new_state;
 }
 
+player_state player::get_state() const
+{
+	return curr_state;
+}
+
+
 void player::player_behaviour()
 {
+	DrawText("HP", 10, 10, 30, GREEN);
+	DrawRectangle(60, 10, HP*20, 30, GREEN);
+	if (HP <= 0) {
+		curr_state = DEATH;
+	}
 	switch (curr_state)
 	{
 	case IDLE:
@@ -45,6 +60,27 @@ void player::player_behaviour()
 Vector2 player::get_pos() const
 {
 	return pos;
+}
+
+bool player::is_attacking()
+{
+	return curr_state == ATTACK_LEFT || curr_state == ATTACK_RIGHT;
+}
+
+bool player::is_invincible()
+{
+	if (invincibility >= 0 && invincibility < 10) {
+		invincibility++;
+		return false;
+	}
+	else if (invincibility >= 10) {
+		return true;
+	}
+}
+
+bool player::is_alive()
+{
+	return HP > 0;
 }
 
 void player::idle()
@@ -78,6 +114,17 @@ void player::attack_right()
 	}
 }
 
+void player::take_hit()
+{
+	if (HP > 0 && is_invincible()) {
+		HP -= 1;
+		invincibility = 0;
+	}
+	else if (HP <= 0) {
+		curr_state = DEATH;
+	}
+}
+
 void player::attack_left()
 {
 	DestRect.width = 64 * 3;
@@ -101,4 +148,5 @@ void player::death()
 	DestRect.y = GetScreenHeight() / 2;
 	entity_sprite.animate(death_state, DestRect, 0, 10);
 }
+
 
