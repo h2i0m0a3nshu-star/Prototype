@@ -2,7 +2,13 @@
 
 enemy::enemy()
 {
-	pos.x = 0;
+	int rand = GetRandomValue(0, 1);
+	if (rand == 0) {
+		pos.x = 0;
+	}
+	else {
+		pos.x = GetScreenWidth() - 40;
+	}
 	pos.y = GetScreenHeight() / 2;
 	curr_state = PURSUE_RIGHT;
 	DestRect = {pos.x,pos.y,48 * 3,48 * 3 };
@@ -72,7 +78,7 @@ void enemy::death()
 {
 	DestRect.width = 64 * 3;
 	DestRect.height = 64 * 3;
-	DestRect.y = GetScreenHeight() / 2;
+	DestRect.y = 410 - 22;
 	entity_sprite.animate(death_state, DestRect, 0, 10);
 }
 
@@ -80,7 +86,7 @@ void enemy::pursue()
 {
 	DestRect.width = 48 * 3;
 	DestRect.height = 48 * 3;
-	DestRect.y = GetScreenHeight() / 2 + 18;
+	DestRect.y = 410;
 
 	if (curr_state == PURSUE_RIGHT) {
 		entity_sprite.animate(run_state, DestRect, 0, 8);
@@ -99,7 +105,8 @@ void enemy::attack()
 {
 	DestRect.width = 64 * 3;
 	DestRect.height = 64 * 3;
-	DestRect.y = GetScreenHeight() / 2;
+	DestRect.y = 410 - 22;
+
 	if (curr_state == ENEMY_ATTACK_RIGHT) {
 		entity_sprite.animate(punch_cross_state, DestRect, 0, 7);
 	}
@@ -111,7 +118,10 @@ void enemy::attack()
 
 bool enemy::should_attack(Vector2 heropos)
 {
-	if (pos.x + 120 > heropos.x) {
+	if (pos.x + 110 > heropos.x && curr_state == PURSUE_RIGHT) {
+		return true;
+	}
+	else if (pos.x - 110 < heropos.x && curr_state == PURSUE_LEFT) {
 		return true;
 	}
 	return false;

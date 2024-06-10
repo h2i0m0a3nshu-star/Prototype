@@ -15,14 +15,19 @@ typedef enum player_state {
 class player : public entity {
 public:
 	player();
-	void set_state(player_state new_state);
+
 	player_state get_state() const;
-	void player_behaviour();
+
 	Vector2 get_pos() const;
+
 	void take_hit();
+	void player_behaviour();
+	void set_state(player_state new_state);
+
 	bool is_attacking() override;
 	bool is_invincible();
 	bool is_alive() override;
+
 	~player() {};
 private:
 	bool delay;

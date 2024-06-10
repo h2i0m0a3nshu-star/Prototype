@@ -3,7 +3,7 @@
 player::player()
 {
 	pos.x = GetScreenWidth() / 2;
-	pos.y = GetScreenHeight() / 2;
+	pos.y = 410;
 	
 	curr_state = IDLE;
 	curr_weapon = NORMAL;
@@ -87,7 +87,7 @@ void player::idle()
 {
 	DestRect.width = 48 * 3;
 	DestRect.height = 48 * 3;
-	DestRect.y = GetScreenHeight() / 2 + 18;
+	DestRect.y = 410;
 	if (curr_weapon == NORMAL) {
 		delay = entity_sprite.animate(idle_state, DestRect, 0, 10);
 	}
@@ -100,7 +100,7 @@ void player::attack_right()
 {
 	DestRect.width = 64 * 3;
 	DestRect.height = 64 * 3;
-	DestRect.y = GetScreenHeight() / 2;
+	DestRect.y = 410 - 22;
 
 	if (curr_weapon == NORMAL) {		
 		delay = entity_sprite.animate(punch_cross_state, DestRect, 0, 7);
@@ -129,7 +129,7 @@ void player::attack_left()
 {
 	DestRect.width = 64 * 3;
 	DestRect.height = 64 * 3;
-	DestRect.y = GetScreenHeight() / 2;
+	DestRect.y = 410 - 22;
 	if (curr_weapon == NORMAL) {
 		delay = entity_sprite.flipanimate(punch_cross_state, DestRect, 7);
 	}
@@ -145,7 +145,7 @@ void player::death()
 {
 	DestRect.width = 64 * 3;
 	DestRect.height = 64 * 3;
-	DestRect.y = GetScreenHeight() / 2;
+	DestRect.y = 410 - 22;
 	entity_sprite.animate(death_state, DestRect, 0, 10);
 }
 

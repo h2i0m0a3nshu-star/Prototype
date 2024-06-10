@@ -14,18 +14,26 @@ class enemy :public entity {
 public:
 
 	enemy();
+	
 	void enemyBehaviour(Vector2 heropos);
 	void enemy_setState(enemy_state new_state);
+	
 	Vector2 get_enemy_pos();
+	
 	bool is_alive() override;
 	bool is_attacking() override;
+
 	enemy_state get_enemy_state() const;
+
 private:
 	Rectangle DestRect;
+	
 	enemy_state curr_state;
+	
 	void pursue();
 	void attack();
 	void death();
+	
 	bool should_attack(Vector2 heropos);
 
 };

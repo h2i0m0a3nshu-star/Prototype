@@ -8,8 +8,10 @@
 class mechanics {
 
 public:
-	void input_handler(player hero);
-	void combat_handler(player hero,enemy e);
+	void input_handler(player &hero);
+	void combat_handler(player &hero,enemy &e);
+	void behaviours(player &hero, enemy &e);
+	bool is_game_over(player &hero);
 private:
 
 	int delay = 5;
@@ -17,12 +19,10 @@ private:
 
 	int ctr = 0;
 
-	player hero;
-	enemy e1;
-
 	int player_input_time = 0;
 	int enemy_attack_time = 0;
 
 	bool combat_checker(player hero, enemy e);
+	bool is_enemy_dead(enemy e);
 	void delay_handler();
 };

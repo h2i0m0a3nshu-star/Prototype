@@ -25,7 +25,6 @@ protected:
 	Texture2D death_state;
 
 	Vector2 pos;
-	Vector2 vel;
 
 	virtual bool is_alive() = 0;
 	virtual bool is_attacking() = 0;
@@ -34,8 +33,8 @@ protected:
 public:
 	
 	entity() {
+
 		pos = { 0 , 0 };
-		vel = { 0 , 0 };
 
 		idle_state = *entity_sprite.loadTexture(idle_state_path);
 		sword_idle_state = *entity_sprite.loadTexture(sword_idle_state_path);
@@ -44,8 +43,12 @@ public:
 		punch_cross_state = *entity_sprite.loadTexture(punch_cross_state_path);
 		sword_basic_attack_state = *entity_sprite.loadTexture(sword_basic_attack_path);
 		death_state = *entity_sprite.loadTexture(death_path);
-	};
-	~entity() {};
+	}
+
+	~entity() {
+		
+		
+	}
 
 
 };
