@@ -170,5 +170,3 @@ void player::death()
 	DestRect.y = 410 - 22;
 	entity_sprite.animate(death_state, DestRect, 0, 10);
 }
-
-

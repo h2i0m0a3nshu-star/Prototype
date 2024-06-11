@@ -12,6 +12,5 @@ public:
 
 private:
 	int ctr = 0;
-	int delay = 5;
-	void delay_handler();
+	int delay = 0;
 };

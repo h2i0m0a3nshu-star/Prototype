@@ -19,10 +19,12 @@ void play::update_screen()
 		IsGamepadButtonPressed(0, GAMEPAD_BUTTON_RIGHT_TRIGGER_2)) {
 		store_screen.open_store = 1;
 	}
-	if (store_screen.open_store)
-	{
+	if (store_screen.open_store){
 		store_screen.update_screen();
 		store_screen.input_handler(hero);
+	}
+	else if (wave.wave_over) {
+		cut_screen.cut_scene_handler(wave.get_wave_number());
 	}
 	else {
 		game_mechanics.input_handler(hero);
@@ -31,6 +33,8 @@ void play::update_screen()
 		wave.wave_handler(e);
 		DrawText("Press SPACE or LEFT TRIGGER 2 to go to the store", 10, 560, 20, GREEN);
 	}
+	DrawText(TextFormat("%i", wave.get_wave_number()), 200, 560, 20, GREEN);
+
 }
 
 bool play::game_over_checker()
@@ -46,6 +50,7 @@ void Game_over::update_screen()
 
 store::store()
 {
+	open_store		= 0;
 	sword_bought	= 0;
 	katana_bought	= 0;
 	potion_bought	= 0;
@@ -60,7 +65,6 @@ void store::update_screen()
 	DrawRectangle(700, 200, 200, 200, BLACK);
 
 	DrawRectangle(selector.x, selector.y, selector.width, selector.height, YELLOW);
-	
 
 	DrawText("SWORD", 130, 150, 40, BLACK);
 	DrawText("SWORD", 135, 155, 40, RAYWHITE);
@@ -169,3 +173,4 @@ void store::buy_potion(player& hero)
 	hero.XP -= 50;
 	hero.take_potion();
 }
+

@@ -1,16 +1,10 @@
 #pragma once
 #include "wave.h"
+#include "cut_scene.h"
 #include "mechanics.h"
 #include "player.h"
 #include "enemy.h"
 #include <raylib.h>
-
-typedef enum screen {
-	MAIN_MENU,
-	PLAY,
-	STORE,
-	PAUSE,
-};
 
 class Screen {
 protected:
@@ -18,22 +12,9 @@ public:
 	virtual void update_screen() = 0;
 };
 
-class cut_scenes {
-public:
-	bool cut_scene_time = 0;
-
-	cut_scenes();
-	void update_screen();
-	void cut_scene_1();
-	void cut_scene_2();
-	void cut_scene_3();
-	void input_handler();
-};
-
-
 class store{
 public:
-	bool open_store = 0;
+	bool open_store;
 
 	store();
 	void update_screen();
@@ -60,9 +41,8 @@ protected:
 	mechanics game_mechanics;
 	store store_screen;
 	wave_system wave;
+	cut_scene_system cut_screen;
 };
-
-
 
 class Game_over :public Screen {
 public:

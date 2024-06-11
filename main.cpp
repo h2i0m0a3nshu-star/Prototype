@@ -52,10 +52,10 @@ int main(){
 		DrawTextureEx(ground_tileset, { float(ground_tileset.width * 6),532}, 0, 3, RAYWHITE);
 		DrawTextureEx(ground_tileset, { float(ground_tileset.width * 9),532}, 0, 3, RAYWHITE);
 		DrawTextureEx(ground_tileset, { float(ground_tileset.width * 12),532}, 0, 3, RAYWHITE);
+
 		curr_screen->update_screen();
 		EndDrawing();
 	}
 	CloseWindow();
 	return 0;
 }
-
