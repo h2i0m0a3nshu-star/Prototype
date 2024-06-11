@@ -18,8 +18,7 @@ public:
 	void enemyBehaviour(Vector2 heropos);
 	void enemy_setState(enemy_state new_state);
 	void enemy_setPos(int new_pos);
-	bool reincarnate();
-
+	
 	Vector2 get_enemy_pos();
 	
 	bool is_alive() override;

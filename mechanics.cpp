@@ -58,11 +58,6 @@ bool mechanics::combat_checker(player hero, enemy e)
 	return false;
 }
 
-bool mechanics::is_enemy_dead(enemy e)
-{
-	return e.get_enemy_state() == DEATH_STATE;
-}
-
 void mechanics::delay_handler()
 {
 	if (delay >= 0 && delay < 5) {

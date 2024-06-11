@@ -57,21 +57,7 @@ void enemy::enemy_setState(enemy_state new_state)
 void enemy::enemy_setPos(int new_pos)
 {
 	pos.x = new_pos;
-}
-
-bool enemy::reincarnate()
-{
-	int rand = GetRandomValue(0, 51);
-	if (rand%2 == 0) {
-		pos.x = 0;
-	}
-	else {
-		pos.x = GetScreenWidth() - 40;
-	}
-
-	curr_state = PURSUE_RIGHT;
-	DestRect = { pos.x,pos.y,48 * 3,48 * 3 };
-	return true;
+	DestRect.x = new_pos;
 }
 
 Vector2 enemy::get_enemy_pos()

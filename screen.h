@@ -35,13 +35,14 @@ class play :public Screen {
 public:
 	void update_screen() override;
 	bool game_over_checker();
-protected:
+private:
 	player hero;
 	enemy e;
 	mechanics game_mechanics;
 	store store_screen;
 	wave_system wave;
 	cut_scene_system cut_screen;
+
 };
 
 class Game_over :public Screen {

@@ -23,6 +23,5 @@ private:
 	int enemy_attack_time = 0;
 
 	bool combat_checker(player hero, enemy e);
-	bool is_enemy_dead(enemy e);
 	void delay_handler();
 };

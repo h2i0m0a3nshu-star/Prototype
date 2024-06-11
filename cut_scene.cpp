@@ -2,13 +2,19 @@
 
 cut_scene_system::cut_scene_system()
 {
-	cut_scene_time = 0;
+
 }
 
-void cut_scene_system::cut_scene_handler(int wave_number)
+void cut_scene_system::cut_scene_handler(wave_system &wave)
 {
-	
-	switch (wave_number)
+
+	if (IsKeyPressed(KEY_O) ||
+		IsGamepadButtonPressed(0, GAMEPAD_BUTTON_RIGHT_TRIGGER_2)) {
+		wave.set_cut_scene_time(0);
+		DrawText("O PRESSED", 400, 400, 30, RED);
+	}
+
+	switch (wave.get_wave_number())
 	{
 	case 1:
 		DrawText("WORKING", 10, 10, 30, WHITE);
@@ -20,14 +26,5 @@ void cut_scene_system::cut_scene_handler(int wave_number)
 		DrawText("WORKING", 10, 10, 30, RED);
 		break;
 
-	}
-	input_handler();
-}
-
-void cut_scene_system::input_handler()
-{
-	if (IsKeyPressed(KEY_O) ||
-		IsGamepadButtonPressed(0, GAMEPAD_BUTTON_RIGHT_TRIGGER_2)) {
-		cut_scene_time = 0;
 	}
 }

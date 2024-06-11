@@ -23,8 +23,8 @@ void play::update_screen()
 		store_screen.update_screen();
 		store_screen.input_handler(hero);
 	}
-	else if (wave.wave_over) {
-		cut_screen.cut_scene_handler(wave.get_wave_number());
+	else if (wave.is_wave_over()) {
+		cut_screen.cut_scene_handler(wave);
 	}
 	else {
 		game_mechanics.input_handler(hero);
@@ -33,8 +33,7 @@ void play::update_screen()
 		wave.wave_handler(e);
 		DrawText("Press SPACE or LEFT TRIGGER 2 to go to the store", 10, 560, 20, GREEN);
 	}
-	DrawText(TextFormat("%i", wave.get_wave_number()), 200, 560, 20, GREEN);
-
+	
 }
 
 bool play::game_over_checker()
