@@ -9,7 +9,8 @@ player::player()
 	curr_weapon = NORMAL;
 
 	HP = 5;
-
+	XP = 100;
+	
 	invincibility = 10;
 
 	delay = false;
@@ -19,8 +20,13 @@ player::player()
 
 void player::set_state(player_state new_state)
 {
-	entity_sprite.setctr(0);
+	entity_sprite.setctr(1);
 	curr_state = new_state;
+}
+
+void player::set_weapon(weapon new_weapon)
+{
+	curr_weapon = new_weapon;
 }
 
 player_state player::get_state() const
@@ -32,6 +38,9 @@ player_state player::get_state() const
 void player::player_behaviour()
 {
 	DrawText("HP", 10, 10, 30, GREEN);
+	
+	DrawText(TextFormat("XP:%i",XP), 800, 10, 30, GREEN);
+
 	DrawRectangle(60, 10, HP*20, 30, GREEN);
 	if (HP <= 0) {
 		curr_state = DEATH;
@@ -91,9 +100,14 @@ void player::idle()
 	if (curr_weapon == NORMAL) {
 		delay = entity_sprite.animate(idle_state, DestRect, 0, 10);
 	}
-	else if (curr_weapon == SWORD) {
+	else if (curr_weapon == SWORD || curr_weapon == KATANA) {
 		delay = entity_sprite.animate(sword_idle_state, DestRect, 0, 10);
 	}
+}
+
+void player::take_potion()
+{
+	HP = 5;
 }
 
 void player::attack_right()
@@ -107,6 +121,10 @@ void player::attack_right()
 	}
 	else if (curr_weapon == SWORD) {
 		delay = entity_sprite.animate(sword_basic_attack_state, DestRect, 0, 6);
+	}
+	else if (curr_weapon == KATANA) {
+		DestRect.width = 80 * 3;
+		delay = entity_sprite.animate(katana_attack_state, DestRect, 0, 9);
 	}
 
 	if (delay) {
@@ -135,6 +153,10 @@ void player::attack_left()
 	}
 	else if (curr_weapon == SWORD) {
 		delay = entity_sprite.flipanimate(sword_basic_attack_state, DestRect,6);
+	}
+	else if (curr_weapon == KATANA) {
+		DestRect.width = 80 * 3;
+		delay = entity_sprite.flipanimate(katana_attack_state, DestRect, 9);
 	}
 	if (delay) {
 		curr_state = IDLE;

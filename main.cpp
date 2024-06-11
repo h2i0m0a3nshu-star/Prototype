@@ -8,6 +8,7 @@ int main(){
 	
 	main_menu main_menu_screen;
 	play play_screen;
+
 	Game_over game_over_screen;
 	
 	Screen *curr_screen = &main_menu_screen;
@@ -30,7 +31,8 @@ int main(){
 			curr_screen == &main_menu_screen) {
 			curr_screen = &play_screen;
 		}
-		else if (curr_screen == &play_screen && play_screen.game_over_checker()) {
+		else if (curr_screen == &play_screen && 
+			play_screen.game_over_checker()) {
 			curr_screen = &game_over_screen;
 		}
 

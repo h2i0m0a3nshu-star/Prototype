@@ -26,6 +26,7 @@ void mechanics::combat_handler(player &hero, enemy &e)
 		&& hero.get_state() == ATTACK_RIGHT
 		&& combat_checker(hero, e)) {
 		e.enemy_setState(DEATH_STATE);
+		hero.XP++;
 	}
 
 	if (hero.is_alive() && e.get_enemy_state() != DEATH_STATE && e.is_attacking()) {

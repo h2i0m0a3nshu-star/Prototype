@@ -11,11 +11,20 @@ typedef enum player_state {
 	DEATH
 };
 
+typedef enum weapon {
+	NORMAL,
+	SWORD,
+	KATANA
+};
+
 // The player class
 class player : public entity {
 public:
 	player();
 
+	int XP;
+	int HP;
+	
 	player_state get_state() const;
 
 	Vector2 get_pos() const;
@@ -23,6 +32,8 @@ public:
 	void take_hit();
 	void player_behaviour();
 	void set_state(player_state new_state);
+	void set_weapon(weapon new_weapon);
+	void take_potion();
 
 	bool is_attacking() override;
 	bool is_invincible();
@@ -31,13 +42,10 @@ public:
 	~player() {};
 private:
 	bool delay;
+	
 	int invincibility;
-	Rectangle DestRect;
 
-	typedef enum weapon {
-		NORMAL,
-		SWORD
-	};
+	Rectangle DestRect;
 
 	player_state curr_state;
 	weapon curr_weapon = NORMAL;

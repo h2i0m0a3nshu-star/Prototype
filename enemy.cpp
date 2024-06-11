@@ -2,8 +2,8 @@
 
 enemy::enemy()
 {
-	int rand = GetRandomValue(0, 1);
-	if (rand == 0) {
+	int rand = GetRandomValue(0, 51);
+	if (rand%2 == 0) {
 		pos.x = 0;
 	}
 	else {
@@ -52,6 +52,26 @@ void enemy::enemyBehaviour(Vector2 heropos)
 void enemy::enemy_setState(enemy_state new_state)
 {
 	curr_state = new_state;
+}
+
+void enemy::enemy_setPos(int new_pos)
+{
+	pos.x = new_pos;
+}
+
+bool enemy::reincarnate()
+{
+	int rand = GetRandomValue(0, 51);
+	if (rand%2 == 0) {
+		pos.x = 0;
+	}
+	else {
+		pos.x = GetScreenWidth() - 40;
+	}
+
+	curr_state = PURSUE_RIGHT;
+	DestRect = { pos.x,pos.y,48 * 3,48 * 3 };
+	return true;
 }
 
 Vector2 enemy::get_enemy_pos()
