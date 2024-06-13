@@ -72,13 +72,13 @@ void wave_system::wave_updater()
 	switch (curr_wave)
 	{
 	case 0:
-		num_of_enemies = 2;
+		num_of_enemies = 10;
 		break;
 	case 1:
-		num_of_enemies = 2;
+		num_of_enemies = 15;
 		break;
 	case 2:
-		num_of_enemies = 3;
+		num_of_enemies = 20;
 		break;
 	}
 }

@@ -5,23 +5,21 @@
 #include "sprites.h"
 #include <raylib.h>
 
+// Class for handling the mechanics of the game
 class mechanics {
 
 public:
-	void input_handler(player &hero);
-	void combat_handler(player &hero,enemy &e);
-	void behaviours(player &hero, enemy &e);
-	bool is_game_over(player &hero);
+	void input_handler(player& hero);				// Function to handle the input of the game
+	void combat_handler(player& hero, enemy& e);	// Function to hanlde combat situations
+	void behaviours(player& hero, enemy& e);		// Function to hanlde the behaviours of all entity
+	bool is_game_over(player& hero);				// Function to check game over condition
 private:
 
-	int delay = 5;
+	// Some other variables for delay and frame counting
+	int delay = 5;									
 	int enemy_delay = 0;
-
 	int ctr = 0;
 
-	int player_input_time = 0;
-	int enemy_attack_time = 0;
-
-	bool combat_checker(player hero, enemy e);
-	void delay_handler();
+	bool combat_checker(player hero, enemy e);		// Function to check combat situations
+	void delay_handler();							// Function to handle delay
 };

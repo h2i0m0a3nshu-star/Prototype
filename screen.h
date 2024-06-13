@@ -6,12 +6,14 @@
 #include "enemy.h"
 #include <raylib.h>
 
+// Screen class
 class Screen {
 protected:
 public:
 	virtual void update_screen() = 0;
 };
 
+// Store Screen Class
 class store{
 public:
 	bool open_store;
@@ -31,6 +33,7 @@ private:
 	void buy_potion(player& hero);
 };
 
+// Play Screen Class
 class play :public Screen {
 public:
 	void update_screen() override;
@@ -45,12 +48,14 @@ private:
 
 };
 
+// Game Over Screen Class
 class Game_over :public Screen {
 public:
 	void update_screen() override;
 private:
 };
 
+// Main Menu Screen Class
 class main_menu:public Screen
 {
 public:

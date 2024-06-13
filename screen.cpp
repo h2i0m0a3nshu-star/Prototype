@@ -1,5 +1,6 @@
 #include "screen.h"
 
+// Constructor for the main menu screen
 main_menu::main_menu()
 {
 
@@ -107,7 +108,7 @@ void store::update_screen()
 
 void store::input_handler(player &hero)
 {
-	DrawText(TextFormat("XP:%i", hero.XP), 800, 10, 30, GREEN);
+	DrawText(TextFormat("XP:%i", hero.get_XP()), 800, 10, 30, GREEN);
 
 	if (IsKeyPressed(KEY_D) ||
 		IsGamepadButtonPressed(0, GAMEPAD_BUTTON_RIGHT_TRIGGER_1)) {
@@ -128,14 +129,14 @@ void store::input_handler(player &hero)
 		}
 	}
 	else if (IsKeyPressed(KEY_O) ||
-		IsGamepadButtonPressed(0, GAMEPAD_BUTTON_LEFT_TRIGGER_2)) {
+		IsGamepadButtonPressed(0, GAMEPAD_BUTTON_RIGHT_FACE_RIGHT)) {
 		open_store = 0;
 	}
 
 	if (
 		(IsKeyPressed(KEY_X) ||
-		IsGamepadButtonPressed(0, GAMEPAD_BUTTON_LEFT_TRIGGER_1)) &&
-		hero.XP >= 50
+		IsGamepadButtonPressed(0, GAMEPAD_BUTTON_RIGHT_FACE_DOWN)) &&
+		hero.get_XP() >= 50
 		) {
 		if (selector.x == 100 && !sword_bought) {
 			sword_bought = 1;
@@ -147,7 +148,7 @@ void store::input_handler(player &hero)
 		}
 		else if (
 			selector.x == 700 && !potion_bought &&
-			hero.HP < 5 && hero.HP > 0
+			hero.get_HP() < 5 && hero.get_HP() > 0
 			) {
 			potion_bought = 1;
 			buy_potion(hero);
@@ -157,19 +158,19 @@ void store::input_handler(player &hero)
 
 void store::buy_sword(player& hero)
 {
-	hero.XP -= 50;
+	hero.increase_XP(-50);
 	hero.set_weapon(SWORD);
 }
 
 void store::buy_katana(player& hero)
 {
-	hero.XP -= 50;
+	hero.increase_XP(-50);
 	hero.set_weapon(KATANA);
 }
 
 void store::buy_potion(player& hero)
 {
-	hero.XP -= 50;
+	hero.increase_XP(-50);
 	hero.take_potion();
 }
 
