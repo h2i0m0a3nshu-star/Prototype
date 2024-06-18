@@ -80,6 +80,9 @@ void wave_system::wave_updater()
 	case 2:
 		num_of_enemies = 20;
 		break;
+	default:
+		num_of_enemies = 100;
+		break;
 	}
 }
 

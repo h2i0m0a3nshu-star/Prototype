@@ -47,6 +47,8 @@ void cut_scene_system::cut_scene_1()
 	Color text_color = { 255,255,255,transparency_value };
 	DrawText("\"The one seeking vengence\nfeels the need to correct something -\nan imbalance in the scales of justice.\"", 100, 100, 30, text_color);
 	DrawText("Walking through the harsh jungle I found myself surrounded,\nby the relentless echoes of the past and the shadows of \nthose who murdered my father.", 50, 300, 28, text_color);
+	DrawText("Press O to continue to the endless mode", 50, 450, 28, text_color);
+
 }
 
 // cut scene 2 handler
@@ -56,6 +58,8 @@ void cut_scene_system::cut_scene_2()
 	Color text_color = { 255,255,255,transparency_value };
 	DrawText("\"Seeds of vengence once sown grow tangled roots\ndarkening the heart and feed the fury within.\"", 100, 100, 30, text_color);
 	DrawText("Feeding on the fear of the innocent, these people felt not emotion\nI knew in order to defeat a monster I need to become one\nI found my resolve hardening my heart darkening .", 50, 300, 28, text_color);
+	DrawText("Press O to continue to the endless mode", 50, 450, 28, text_color);
+
 }
 
 // cut scene 3 handler
@@ -68,6 +72,7 @@ void cut_scene_system::cut_scene_3()
 	DrawText("Character Art	 by	ZeggyGames", 50, 330, 28, text_color);
 	DrawText("Background Art by  brullov", 50, 360, 28, text_color);
 	DrawText("Concept & Programming by\nHimanshu Patel & Simarjeet Singh", 50, 390, 28, text_color);
+	DrawText("Press O to continue to the endless mode", 50, 450, 28, text_color);
 }
 
 void cut_scene_system::fading_effect_handler()

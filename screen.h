@@ -9,6 +9,7 @@
 // Screen class
 class Screen {
 protected:
+
 public:
 	virtual void update_screen() = 0;
 };

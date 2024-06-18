@@ -13,7 +13,7 @@ player::player()
 
 	// Setting the player HP & XP
 	HP = 5;
-	XP = 100;
+	XP = 0;
 	
 	// Setting the invincibility 
 	invincibility = 10;

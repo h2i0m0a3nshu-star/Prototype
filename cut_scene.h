@@ -7,7 +7,7 @@
 class cut_scene_system {
 public:
 	cut_scene_system();								// The constructor
-	void cut_scene_handler(wave_system &wave);		// The cut scene handling function
+	void cut_scene_handler(wave_system &wave);		// The cut scene handling function	
 
 private:
 	int frame_ctr;									// A variable to track the frames 
