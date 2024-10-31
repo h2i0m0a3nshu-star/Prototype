@@ -1,0 +1,2 @@
+To be honest this design for the game is really bad including how I handled the graphics.
+It could have been better will be working to improve it in the future.
